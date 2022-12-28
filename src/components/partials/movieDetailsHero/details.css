@@ -1,0 +1,29 @@
+.hero{
+    position: relative;
+}
+.hero-img{
+    width: 100%;
+    height: auto;
+    z-index: 2;
+    position: relative;
+}
+.hero-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.our-story-card-animation{
+    height: 100%;
+    left: 50%;
+    max-height: 48%;
+    max-width: 60%;
+    position: absolute;
+    top: 32%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    overflow: hidden;
+}
+video{
+    display: inline-block;
+    vertical-align: baseline;
+}

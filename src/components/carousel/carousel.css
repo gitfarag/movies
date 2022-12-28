@@ -1,0 +1,7 @@
+.img-overlay{
+    background-color: none;
+    background: linear-gradient(180deg, #fff0, #282c34);
+    height: 100vh;
+    position: absolute;
+    top: 0;
+}

@@ -1,0 +1,25 @@
+.navigation{
+    position: fixed;
+    z-index: 3;
+    right: 30px;
+    top: 30px;
+    max-width: 40px;
+}
+.navItem{
+    background-color: #282c34;
+    border: none; 
+    margin: 2.5px 0;
+    border-radius: 50%;
+    font-size: 16px;
+    transition: 0.1s;
+}
+.navItem:hover {
+    background-color: white;
+    color: #282c34;
+    transition: 0.7s;
+
+}
+.navItem:hover i {
+    transition: 0.2s;
+    font-size: 18px;
+}

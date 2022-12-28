@@ -1,0 +1,9 @@
+@import './icofont/icofont.min.css';
+:root{
+  --pColor:#282c34;
+  --sColor:#61dafb;
+}
+.App {
+  text-align: center;
+}
+

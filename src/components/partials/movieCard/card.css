@@ -1,0 +1,47 @@
+.card {
+    border: none;
+    overflow: hidden;
+    
+    
+}
+.card-image{
+    transition: 0.3s;
+    z-index: 1;
+    
+}
+.card-image:hover{
+transform: scale(1.1);
+}
+
+.card-body {
+    background-color: gray;
+    border-radius: 0px 0px 5px 5px;
+    height: 100px;
+    overflow: hidden;
+    transition: 0.3s;
+    z-index: 2;
+}
+
+.card:hover .card-body {
+    background-color: rgba(66, 66, 66, 0.582);
+}
+
+.card-link {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.card-title span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.date span {
+    font-size: 1rem;
+}
+
+.badge {
+    font-size: 12px;
+    background-color: #282c34;
+    margin: 0 5px;
+}
