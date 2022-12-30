@@ -19,7 +19,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "chmod +x ./bin/deploy.sh && ./bin/deploy.sh",
+    "deploy": "chmod +x ./bin/deploy.sh",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
