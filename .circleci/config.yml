@@ -18,7 +18,7 @@ jobs:
           name: Build site
           command: npm run build
       - run:
-          name: Deploy server to eb
+          name: Deploy site to s3
           command: npm run deploy
 
 workflows:
