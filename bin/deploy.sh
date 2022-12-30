@@ -1,1 +1,1 @@
-aws s3 cp --recursive --acl public-read ./build s3://letsget-bucket/
+aws s3 cp --recursive --acl public-read ./build s3://movie-bucket-2023/
