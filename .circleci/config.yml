@@ -1,0 +1,31 @@
+version: 2.1
+orbs:
+  node: circleci/node@5.0.0
+  aws-cli: circleci/aws-cli@2.1.0
+jobs:
+  build:
+    docker:
+      - image: cimg/node:18.2.0
+    steps:
+      - node/install:
+          node-version: 18.12.0
+      - aws-cli/setup
+      - checkout
+      - run:
+          name: Install site dependencies
+          command: npm install
+      - run:
+          name: Build site
+          command: npm run build
+      - run:
+          name: Deploy server to eb
+          command: npm run deploy
+
+workflows:
+  build-deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - main
