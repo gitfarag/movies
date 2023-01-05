@@ -25,7 +25,7 @@ const Home = () => {
   // global states from Context-API
   const {setPopular,setLatest,setTopRted } = useContext(MoviesContext)
   const { movieType, cat } = useContext(CatContext)
-  const [loading, setLoading] = useState('')
+  const [loading] = useState('')
   // set some state to render
   const firstLoad = async () => {
     try {
