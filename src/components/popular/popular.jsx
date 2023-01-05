@@ -2,8 +2,12 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import MovieCard from "../partials/movieCard/card";
+import { useContext } from "react";
+import { MoviesContext } from "../../context/moviesContext";
 
-const Popular = ({ movies }) => {  
+const Popular = () => {  
+  const {popular} = useContext(MoviesContext)
+  const movies = popular.slice(0,15)
   return (
     <Container fuild="true">
       <Row><h5 className="text-light">

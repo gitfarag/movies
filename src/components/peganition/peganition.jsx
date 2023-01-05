@@ -1,9 +1,11 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {  Col, Container, Row } from "react-bootstrap";
 import Pagination from "react-bootstrap/Pagination";
+import { CatContext } from "../../context/catContext";
 
-const Peg = ({ cat, setMovieType }) => {
+const Peg = () => {
+  const { cat, setMovieType }= useContext(CatContext)
   const [act, setActive] = useState(1);
   const handler = async (e) => {
     try {

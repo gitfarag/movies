@@ -1,48 +1,70 @@
 import DetailsHero from "../../components/partials/movieDetailsHero/detailsHero";
+import { PopularService, TopRated, LatestService } from './../../controller'
 import MovieCard from "../../components/partials/movieCard/card";
 import TopRelated from "../../components/topRelated/topRelated";
 import HomeCarousel from "../../components/carousel/carousel";
+import { MoviesContext } from "../../context/moviesContext";
+import Peg from "../../components/peganition/peganition";
+import { useEffect, useState, useContext } from "react";
 import ToolBar from "../../components/toolbar/toolbar";
 import Popular from "../../components/popular/popular";
 import { Col, Row, Container } from "react-bootstrap";
 import Latest from "../../components/Latest/latest";
 import NavBar from "../../components/navbar/navBar";
-import { useEffect, useState } from "react";
 import { SyncLoader } from "react-spinners";
 import "./home.css";
-import Peg from "../../components/peganition/peganition";
+import { CatContext } from "../../context/catContext";
 
-const Home = ({ popular, latest, topRated }) => {
-  const [cat, setCat] = useState('')
-  const [movieType, setMovieType] = useState([])
+
+const _popular = new PopularService();
+const _top = new TopRated();
+const _latest = new LatestService();
+
+
+const Home = () => {
+  // global states from Context-API
+  const {setPopular,setLatest,setTopRted } = useContext(MoviesContext)
+  const { movieType, cat } = useContext(CatContext)
   const [loading, setLoading] = useState('')
+  // set some state to render
+  const firstLoad = async () => {
+    try {
+      const popMovies = await _popular.index()
+      const latestMovies = await _latest.index()
+      const topMovies = await _top.index();
+      setPopular(popMovies.results)
+      setLatest(latestMovies.results)
+      setTopRted(topMovies.results)
+    } catch (error) {
+      // console.log(error)
+      return error
+    }
+  }
   useEffect(() => {
-    setLoading(false)
-    setTimeout(() => {
-      setLoading(true)
-    }, 2000)
+    firstLoad().catch(err => { console.log(err) })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <>
-      <NavBar setCat={setCat} />
-      <HomeCarousel movies={popular.slice(0, 5)} />
-      <ToolBar setCat={setCat} setMovieType={setMovieType} />
+      <NavBar />
+      <HomeCarousel />
+      <ToolBar />
       {
         !cat ?
           <>
-            <Popular movies={popular.slice(0, 15)} />
+            <Popular/>
             <div className="bg-warning mt-5">
               <DetailsHero />
             </div>
-            <TopRelated movies={topRated.slice(0, 15)} />
-            <Latest movies={latest.slice(0, 15)} />
+            <TopRelated/>
+            <Latest/>
           </> :
           <>
             <Container>
               <Row>
                 {
-                  !loading ? <Col sm='12' className="d-flex justify-content-center">
+                  loading ? <Col sm='12' className="d-flex justify-content-center">
                     <SyncLoader color='rgba(158, 29, 44, 0.99)' size={50} center />
                   </Col> :
                     <>
@@ -59,7 +81,7 @@ const Home = ({ popular, latest, topRated }) => {
                       }
                     </>
                 }
-                <Peg cat={cat} setMovieType={setMovieType}/>
+                <Peg />
               </Row>
             </Container>
 

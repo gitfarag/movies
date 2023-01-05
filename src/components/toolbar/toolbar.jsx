@@ -5,8 +5,11 @@ import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import axios from 'axios';
+import { useContext } from 'react';
+import { CatContext } from '../../context/catContext';
 
-const ToolBar = ({setCat,setMovieType}) => {
+const ToolBar = () => {
+  const {setCat,setMovieType} = useContext(CatContext)
   const getCatMovies = async(name)=>{
   try {
        const res =  await axios.get(

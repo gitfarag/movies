@@ -1,6 +1,10 @@
+import { useContext } from "react";
+import { MoviesContext } from "../../context/moviesContext";
 import Carousel from "react-bootstrap/Carousel";
 import "./carousel.css";
-const HomeCarousel = ({ movies }) => {
+const HomeCarousel = () => {
+  const {popular} = useContext(MoviesContext)
+  const movies = popular.slice(0,5)
   return (
     <Carousel>
       {movies.map((movie) => {
