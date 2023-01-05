@@ -1,5 +1,7 @@
 ### Movie App Using React.js
 
+# This App is deployed on AWS using Circleci CI/CD
+
 In the project directory, you can run:
 
 ### `npm start`
