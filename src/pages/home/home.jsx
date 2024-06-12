@@ -48,7 +48,7 @@ const Home = () => {
   return (
     <>
       <NavBar />
-      <HomeCarousel />
+      {/* <HomeCarousel /> */}
       <ToolBar />
       {
         !cat ?
@@ -62,8 +62,7 @@ const Home = () => {
           </> :
           <>
             <Container>
-              <p className="text-light">hello</p>
-              {/* <Row>
+              <Row>
                 {
                   loading ? <Col sm='12' className="d-flex justify-content-center">
                     <SyncLoader color='rgba(158, 29, 44, 0.99)' size={50} center />
@@ -83,7 +82,7 @@ const Home = () => {
                     </>
                 }
                 <Peg />
-              </Row> */}
+              </Row>
             </Container>
 
           </>
