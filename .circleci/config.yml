@@ -7,9 +7,17 @@ jobs:
       - image: cimg/node:18.2.0
     steps:
       - checkout
+      - restore_cache:
+          keys: 
+            - mvs-dependencies-{{checksum "package.json"}}
       - run:
           name: Install site dependencies
           command: npm install
+      - save-cache :
+          path: 
+            - node_modules
+          keys: 
+            - mvs-dependencies-
       - run:
           name: Build site
           command: npm run build
