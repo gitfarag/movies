@@ -2,7 +2,7 @@ import DetailsHero from "../../components/partials/movieDetailsHero/detailsHero"
 import { PopularService, TopRated, LatestService } from './../../controller'
 import MovieCard from "../../components/partials/movieCard/card";
 import TopRelated from "../../components/topRelated/topRelated";
-// import HomeCarousel from "../../components/carousel/carousel";
+import HomeCarousel from "../../components/carousel/carousel";
 import { MoviesContext } from "../../context/moviesContext";
 import Peg from "../../components/peganition/peganition";
 import { useEffect, useState, useContext } from "react";
@@ -48,7 +48,7 @@ const Home = () => {
   return (
     <>
       <NavBar />
-      {/* <HomeCarousel /> */}
+      <HomeCarousel />
       <ToolBar />
       {
         !cat ?
