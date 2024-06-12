@@ -17,7 +17,7 @@ jobs:
           paths: 
             - node_modules
           key: 
-            - mvs-dependencies-
+            - mvs-dependencies-{{checksum "package.json"}}
       - run:
           name: Build site
           command: npm run build
