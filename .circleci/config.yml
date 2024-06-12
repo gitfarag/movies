@@ -14,9 +14,9 @@ jobs:
           name: Install site dependencies
           command: npm install
       - save-cache:
-          path: 
+          paths: 
             - node_modules
-          keys: 
+          key: 
             - mvs-dependencies-
       - run:
           name: Build site
