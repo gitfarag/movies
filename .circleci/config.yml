@@ -54,7 +54,7 @@ workflows:
       - build:
           # tell the exec to run the above job first
           requires: 
-            - instal
+            - install
       - deploy: 
           # tell the exec to run the above job first
           requires: 
