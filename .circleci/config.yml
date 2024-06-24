@@ -8,7 +8,7 @@ orbs:
 # define jobs
 jobs: 
   # define jb name
-  install-dependencies:
+  install:
     # executer
     docker: 
       - image: cimg/node:18.20.0
@@ -32,17 +32,17 @@ jobs:
           name: build app
           command: npm run build
 
-    deploy:
+  deploy:
     # executer
-      docker: 
-        - image: cimg/node:18.20.0
+    docker: 
+       - image: cimg/node:18.20.0
     # steps
-      steps:
-        - checkout
-        - run: 
+    steps:
+      - checkout
+      - run: 
         # define cmd
-            name: deploy app
-            command: npm run deploy
+          name: deploy app
+          command: npm run deploy
 
 # defilne workflow
 workflows: 
@@ -50,11 +50,11 @@ workflows:
   install-build-deploy: 
     jobs: 
     # list jobs in sequence
-      - install-dependencies
+      - install
       - build:
           # tell the exec to run the above job first
           requires: 
-            - install-dependencies
+            - instal
       - deploy: 
           # tell the exec to run the above job first
           requires: 
