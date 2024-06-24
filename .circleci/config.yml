@@ -1,27 +1,66 @@
+# specify vers
 version: 2.1
+
+# defile orbs
 orbs:
   node: circleci/node@5.0.0
-jobs:
+
+# define jobs
+jobs: 
+  # define jb name
+  install-dependencies:
+    # executer
+    docker: 
+      - image: cimg/node:18.20.0
+    # steps
+    steps:
+       - checkout
+       - run:
+           # define cmd
+          name: install app depe..
+          command: npm i
+
   build:
-    docker:
-      - image: cimg/node:18.2.0
+    # executer
+    docker: 
+      - image: cimg/node:18.20.0
+    # steps
     steps:
       - checkout
-      - run:
-          name: Install site dependencies
-          command: npm install
-      - run:
-          name: Build site
+      - run: 
+      # define cmd
+          name: build app
           command: npm run build
-      - run:
-          name: Deploy site to netlify
-          command: npm run deploy
 
-workflows:
-  build-deploy:
-    jobs:
+    deploy:
+    # executer
+      docker: 
+        - image: cimg/node:18.20.0
+    # steps
+      steps:
+        - checkout
+        - run: 
+        # define cmd
+            name: deploy app
+            command: npm run deploy
+
+# defilne workflow
+workflows: 
+  # define name
+  install-build-deploy: 
+    jobs: 
+    # list jobs in sequence
+      - install-dependencies
       - build:
-          filters:
-            branches:
-              only:
-                - main
+          # tell the exec to run the above job first
+          requires: 
+            - install-dependencies
+      - deploy: 
+          # tell the exec to run the above job first
+          requires: 
+            - build
+          filters: 
+            branches: 
+              - only: main
+
+
